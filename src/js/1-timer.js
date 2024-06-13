@@ -1,7 +1,5 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpicker.min.css';
-// import iziToast from './node_modules/izitoast/dist/js/iziToast.min.js';
-// import './node_modules/izitoast/dist/css/iziToast.min.css';
 
 const options = {
   enableTime: true,
