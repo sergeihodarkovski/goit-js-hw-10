@@ -28,7 +28,7 @@ const hoursElement = document.getElementById('hours');
 const minutesElement = document.getElementById('minutes');
 const secondsElement = document.getElementById('seconds');
 
-let userSelectedDate; // Здесь объявляем переменную userSelectedDate
+let userSelectedDate;
 
 datePicker.config.onClose.push(selectedDates => {
   userSelectedDate = selectedDates[0];
@@ -37,7 +37,7 @@ datePicker.config.onClose.push(selectedDates => {
 startBtn.addEventListener('click', startTimer);
 
 function startTimer() {
-  const selectedDate = new Date(userSelectedDate); // Используем userSelectedDate
+  const selectedDate = new Date(userSelectedDate);
 
   const currentDate = new Date();
   if (selectedDate <= currentDate) {
