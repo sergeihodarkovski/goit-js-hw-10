@@ -1,3 +1,5 @@
+import flatpickr from 'flatpickr';
+
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -26,10 +28,17 @@ const hoursElement = document.getElementById('hours');
 const minutesElement = document.getElementById('minutes');
 const secondsElement = document.getElementById('seconds');
 
+let userSelectedDate; // Здесь объявляем переменную userSelectedDate
+
+datePicker.config.onClose.push(selectedDates => {
+  userSelectedDate = selectedDates[0];
+});
+
 startBtn.addEventListener('click', startTimer);
 
 function startTimer() {
-  const selectedDate = new Date(datePicker.selectedDates[0]);
+  const selectedDate = new Date(userSelectedDate); // Используем userSelectedDate
+
   const currentDate = new Date();
   if (selectedDate <= currentDate) {
     iziToast.error({
@@ -62,10 +71,10 @@ function startTimer() {
 }
 
 function updateTimerUI({ days, hours, minutes, seconds }) {
-  daysElement.innerText = addLeadingZero(days);
-  hoursElement.innerText = addLeadingZero(hours);
-  minutesElement.innerText = addLeadingZero(minutes);
-  secondsElement.innerText = addLeadingZero(seconds);
+  daysElement.innerText = days.toString().padStart(2, '0');
+  hoursElement.innerText = hours.toString().padStart(2, '0');
+  minutesElement.innerText = minutes.toString().padStart(2, '0');
+  secondsElement.innerText = seconds.toString().padStart(2, '0');
 }
 
 function convertMs(ms) {
@@ -80,8 +89,4 @@ function convertMs(ms) {
   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
 
   return { days, hours, minutes, seconds };
-}
-
-function addLeadingZero(value) {
-  return value < 10 ? '0' + value : value;
 }
