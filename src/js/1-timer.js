@@ -1,4 +1,6 @@
 import flatpickr from 'flatpickr';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 const options = {
   enableTime: true,
@@ -23,10 +25,10 @@ const options = {
 const datePicker = flatpickr('#datetime-picker', options);
 
 const startBtn = document.getElementById('start-btn');
-const daysElement = document.getElementById('days');
-const hoursElement = document.getElementById('hours');
-const minutesElement = document.getElementById('minutes');
-const secondsElement = document.getElementById('seconds');
+const daysElement = document.querySelector('.value[data-days]');
+const hoursElement = document.querySelector('.value[data-hours]');
+const minutesElement = document.querySelector('.value[data-minutes]');
+const secondsElement = document.querySelector('.value[data-seconds]');
 
 let userSelectedDate;
 
